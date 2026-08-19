@@ -1,0 +1,39 @@
+{
+  "name": "Project-Cap",
+  "version": "1.0.0",
+  "description": "Credit approval proposal",
+  "license": "UNLICENSED",
+  "private": "true",
+  "type": "module",
+  "dependencies": {
+    "@sap/cds": "^10.0.4"
+  },
+  "devDependencies": {
+    "@cap-js/cds-test": "^1.0.2",
+    "@cap-js/sqlite": "^3",
+    "@sap/cds-dk": "^10.0.6",
+    "jest": "^30.4.2",
+    "supertest": "^7.2.2"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "watch": "cds watch",
+    "test": "jest --runInBand --detectOpenHandles",
+    "build": "rimraf resources mta_archives && mbt build --mtar archive"
+  },
+  "cds": {
+    "requires": {
+      "db": {
+        "[development]": {
+          "kind": "sqlite",
+          "credentials": {
+            "url": "db.sqlite"
+          }
+        },
+        "[production]": {
+          "kind": "hana"
+        }
+      }
+    }
+  }
+}
